@@ -1,16 +1,10 @@
 {
   "customers": [
     {
-      "id": "1",
-      "name": "John Doe",
-      "email": "jdoe@gmail.com",
-      "age": 35
-    },
-    {
       "id": "2",
       "name": "Peter Watson",
       "email": "pwat@gmail.com",
-      "age": 20
+      "age": 56
     },
     {
       "id": "3",
