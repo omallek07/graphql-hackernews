@@ -1,20 +1,20 @@
 {
   "name": "graphql-hackernews",
-  "version": "1.0.0",
-  "description": "recreating hackernews and implementing graphQL",
-  "main": "index.js",
-  "scripts": {
-    "dev:server": "nodemon server.js",
-    "json:server": "json-server --watch data.json"
-  },
-  "author": "Kevin O'Malley",
-  "license": "ISC",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "axios": "^0.18.0",
-    "express": "^4.16.2",
-    "express-graphql": "^0.6.12",
+    "apollo-client-preset": "^1.0.8",
     "graphql": "^0.13.1",
-    "json-server": "^0.12.1",
-    "nodemon": "^1.17.1"
+    "graphql-tag": "^2.8.0",
+    "react": "^16.2.0",
+    "react-apollo": "^2.0.4",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
