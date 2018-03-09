@@ -31,11 +31,17 @@ class CreateLink extends Component {
       </div>
     )
   }
+}
 
   _createLink = async () => {
-    // ... you'll implement this in a bit
+    const { description, url } = this.state
+    await this.props.postMutation({
+      variables: {
+        description,
+        url
+      }
+    })
   }
-}
 
 // 1
 const POST_MUTATION = gql`
