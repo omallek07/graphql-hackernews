@@ -8,6 +8,16 @@ class CreateLink extends Component {
     url: '',
   }
 
+  _createLink = async () => {
+    const { description, url } = this.state
+    await this.props.postMutation({
+      variables: {
+        description,
+        url
+      }
+    })
+  }
+
   render() {
     return (
       <div>
@@ -33,15 +43,6 @@ class CreateLink extends Component {
   }
 }
 
-  _createLink = async () => {
-    const { description, url } = this.state
-    await this.props.postMutation({
-      variables: {
-        description,
-        url
-      }
-    })
-  }
 
 // 1
 const POST_MUTATION = gql`
