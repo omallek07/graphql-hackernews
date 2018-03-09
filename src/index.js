@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './styles/index.css'
 import App from './components/App'
 import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter } from 'react-router-dom'
+
 
 // Imports required dependencies
 import { ApolloProvider } from 'react-apollo'
