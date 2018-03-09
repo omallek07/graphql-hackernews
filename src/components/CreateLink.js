@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
 class CreateLink extends Component {
   state = {
@@ -35,4 +37,18 @@ class CreateLink extends Component {
   }
 }
 
-export default CreateLink
+// 1
+const POST_MUTATION = gql`
+  # 2
+  mutation PostMutation($description: String!, $url: String!) {
+    post(description: $description, url: $url) {
+      id
+      createdAt
+      url
+      description
+    }
+  }
+`
+
+// 3
+export default graphql(POST_MUTATION, { name: 'postMutation' })(CreateLink)
