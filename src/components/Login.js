@@ -61,4 +61,23 @@ class Login extends Component {
   }
 }
 
-export default Login
+const SIGNUP_MUTATION = gql`
+  mutation SignupMutation($email: String!, $password: String!, $name: String!) {
+    signup(email: $email, password: $password, name: $name) {
+      token
+    }
+  }
+`
+
+const LOGIN_MUTATION = gql`
+  mutation LoginMutation($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+    }
+  }
+`
+
+export default compose(
+  graphql(SIGNUP_MUTATION, { name: 'signupMutation' }),
+  graphql(LOGIN_MUTATION, { name: 'loginMutation' }),
+)(Login)
