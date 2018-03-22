@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { AUTH_TOKEN } from '../constants'
 import { timeDifferenceForDate } from '../utils'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
 class Link extends Component {
 
@@ -34,7 +36,12 @@ class Link extends Component {
 }
 
   _voteForLink = async () => {
-    // ... you'll implement this in chapter 6
+    const linkid = this.props.link.index
+    await this.props.voteMutation({
+      variables: {
+        linkId,
+      },
+    })
   }
 
 const VOTE_MUTATION = gql`
