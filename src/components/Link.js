@@ -3,6 +3,7 @@ import { AUTH_TOKEN } from '../constants'
 import { timeDifferenceForDate } from '../utils'
 
 class Link extends Component {
+
   render() {
     const authToken = localStorage.getItem(AUTH_TOKEN)
     return (
@@ -30,11 +31,30 @@ class Link extends Component {
       </div>
     )
   }
-  }
+}
 
   _voteForLink = async () => {
     // ... you'll implement this in chapter 6
   }
-}
 
-export default Link
+const VOTE_MUTATION = gql`
+  mutation VoteMutation($linkid: ID!) {
+    vote(linkId: $linkId) {
+      id
+      link {
+        votes {
+          id
+          user {
+            id
+          }
+        }
+      }
+      user {
+        id
+      }
+    }
+  }
+  `
+export default graphql(VOTE_MUTATION, {
+  name: 'voteMutation'
+})(Link)
