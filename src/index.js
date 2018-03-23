@@ -5,7 +5,9 @@ import App from './components/App'
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom'
 import { AUTH_TOKEN } from './constants'
-import { ApolloLink } from 'apollo-client-preset'
+import { ApolloLink, split } from 'apollo-client-preset'
+import { WebSocketLink } from 'apollo-client-preset'
+import { getMainDefinition } from 'apollo-utilities'
 
 
 // Imports required dependencies
