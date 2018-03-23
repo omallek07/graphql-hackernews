@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
+import { FEED_QUERY } from './LinkList'
 import gql from 'graphql-tag'
 
 class CreateLink extends Component {
@@ -14,6 +15,14 @@ class CreateLink extends Component {
       variables: {
         description,
         url
+      },
+      update: (store, { data: { post } }) => {
+        const data = store.readQuery({ query: FEED_QUERY })
+        data.feed.links.splice(0, 0, post)
+        store.writeQuery({
+          query: FEED_QUERY,
+          data,
+        })
       }
     })
     this.props.history.push('/')
