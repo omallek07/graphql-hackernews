@@ -6,6 +6,18 @@ import gql from 'graphql-tag'
 
 class Link extends Component {
 
+  _voteForLink = async () => {
+    const linkId = this.props.link.index
+    await this.props.voteMutation({
+      variables: {
+        linkId,
+      },
+      update: (store, { data: { vote } }) => {
+        this.props.updateStoreAfterVote(store, vote, linkId)
+      },
+    })
+  }
+
   render() {
     const authToken = localStorage.getItem(AUTH_TOKEN)
     return (
@@ -34,18 +46,6 @@ class Link extends Component {
     )
   }
 }
-
-  _voteForLink = async () => {
-    const linkid = this.props.link.index
-    await this.props.voteMutation({
-      variables: {
-        linkId,
-      },
-      update: (store, { data: { vote } }) => {
-        this.props.updateStoreAfterVote(store, vote, linkId)
-      },
-    })
-  }
 
 const VOTE_MUTATION = gql`
   mutation VoteMutation($linkid: ID!) {
