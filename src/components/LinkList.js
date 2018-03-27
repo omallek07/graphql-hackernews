@@ -5,6 +5,36 @@ import gql from 'graphql-tag'
 
 class LinkList extends Component {
 
+  _subscribeToNewLinks = () => {
+    this.props.feedQuery.subscribeToMore({
+      document: gql`
+        subscription {
+          newLink {
+            node {
+              id
+              url
+              description
+              createdAt
+              postedBy {
+                id
+                name
+              }
+              votes {
+                id
+                user {
+                  id
+                }
+              }
+            }
+          }
+        }
+      `,
+      updateQuery: (previous, { subscriptionData }) => {
+        // ... you'll implement this in a bit
+      }
+    })
+  }
+
   _updateCacheAfterVote = (store, createVote, linkId) => {
     // 1
     const data = store.readQuery({ query: FEED_QUERY })
